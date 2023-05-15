@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <!-- font awesome icon kit -->
+    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
+    <title>A.S.A</title>
+</head>
+<body onload="onload()">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                <img src="logo.png" alt="logo">
+            </a></li>
+            <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item " >Home</span></a></li>
+            <li><a href="#" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
+            <li><a href="#" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
+            <li><a href="#" class="icon"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
+            <li><a href="#" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
+            <li><a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="category">
+            <h1>Choose Category</h1>
+            <div class="bill">
+                <span onclick="openBill()">
+                    <i class="fa-sharp fa-solid fa-file-invoice-dollar"></i>
+                </span>
+            </div>
+        </div>
+        <div class="sideBilling" id="sideBill">
+            <div class="billing">
+                <div class="bill_content">
+                    <div class="bill_header">
+                        <p>Bills</p>
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeBill()">&times;</a>
+                    </div>
+                    <div class="bill_items">
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+
+                        <div class="bill_item">
+                            <div class="remove_item">
+                                <span>&times;</span>
+                            </div>
+                            <div class="item_img">
+                                <img src="best/pizza.jpg" alt="">
+                            </div>
+                            <div class="item_details">
+                                <p>Pizza</p>
+                                <strong>₱300</strong>
+                                <div class="qty">
+                                    <span>-</span>
+                                    <strong>1</strong>
+                                    <span>+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+
+                    <div class="bill_actions">
+                        <div class="total">
+                            <p>Total:</p>
+                            <p>₱<span id="total_price">3896</span></p> 
+                        </div>
+                        <button>Pay Order</button>
+                    </div>
+                    
+            </div>
+        </div>
+
+
+    </section>
+    <section>
+        <div class="scroll-container" id="scroll-container">
+            <div class="scroll-item best">
+                <a href="home.html">A.S.A BEST</a>
+            </div>
+            <div class="scroll-item seafood">
+                    <a href="seafood.html">SEAFOOD</a>
+            </div>
+            <div class="scroll-item chicken">
+                <a href="chicken.html">CHICKEN</a>
+            </div>
+            <div class="scroll-item merienda active">
+                <a href="merienda.html">MERIENDA</a>
+            </div>
+            <div class="scroll-item silog">
+                <a href="silog.html">SILOG</a>
+            </div>
+            <div class="scroll-item beef">
+                <a href="beef.html">BEEF</a>
+            </div>
+            <div class="scroll-item drinks">
+                <a href="drinks.html">DRINKS</a>
+            </div>
+            <div class="scroll-item rice">
+                <a href="rice.html">RICE</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="category">
+        <h1>Merienda</h1>
+    </div>
+    <section class="foods">
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/pesto-pasta.jpeg" alt="">
+                <div>
+                    <h3>Pesto Pasta</h3>
+                    <p>P50</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/onion-rings.jpg"  alt="">
+                <div>
+                    <h3>Onion Rings</h3>
+                    <p>P50</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/hotdog-overload.jpg"  alt="">
+                <div>
+                    <h3>Hotdog Overload</h3>
+                    <p>P50</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/cheesy-fries.jpg"  alt="">
+                <div>
+                    <h3>Cheesy Fries</h3>
+                    <p>P50</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/shawarma-wrap.jpg"  alt="">
+                <div>
+                    <h3>Shawarma Wrap</h3>
+                    <p>P75</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/cheesestick.jpg"  alt="">
+                <div>
+                    <h3>Cheese Stick</h3>
+                    <p>P180</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/ham-and-mushroom-pizza.jpg"  alt="">
+                <div>
+                    <h3>Ham and Mushroom Pizza</h3>
+                    <p>P250</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="merienda/hawaiian-pizza.jpg"  alt="">
+                <div>
+                    <h3>Hawaiian Pizza</h3>
+                    <p>P250</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+
+        
+    </section>
+
+    <!-- <section class="billing">
+        <div>
+            <div class="profile">
+                <p>I'm the Manager</p>
+                <h1>Alexis John Perez</h1>
+            </div>
+            <div class="bills">
+                <h1>Bills</h1>
+            </div>
+            <div class="products">
+                
+            </div>
+            <div>
+                <p>Subtotal</p>
+                <h1>Total</h1>
+            </div>
+        </div>
+    </section> -->
+
+    <script>
+        const container = document.getElementById('scroll-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        container.style.cursor = 'grabbing';
+        });
+
+        container.addEventListener('mouseup', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mouseleave', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 3;
+        container.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+    <script>
+        function openBill() {
+            document.getElementById("sideBill").style.width = "250px";
+            document.getElementById("scroll-container").style.marginRight = "250px";
+        }
+        
+        function closeBill() {
+            document.getElementById("sideBill").style.width = "0";
+            document.getElementById("scroll-container").style.marginRight = "0px";
+        }
+    
+        window.addEventListener("resize", () => {
+        const width = window.innerWidth;
+    
+        if(width >= 1000) {
+            document.getElementById("sideBill").style.width = "250px";
+            document.getElementById("scroll-container").style.marginRight = "250px";
+        } else {
+            document.getElementById("sideBill").style.width = "0";
+            document.getElementById("scroll-container").style.marginRight = "0px";
+        }
+        if (width > 1300) {
+            document.getElementById("sideBill").style.width = "400px";
+            document.getElementById("scroll-container").style.marginRight = "400px";
+        }
+    });
+    function onload() {
+        const width = window.innerWidth;
+    
+        if(width >= 1000) {
+            document.getElementById("sideBill").style.width = "250px";
+            document.getElementById("scroll-container").style.marginRight = "250px";
+        } else {
+            document.getElementById("sideBill").style.width = "0";
+            document.getElementById("scroll-container").style.marginRight = "0px";
+        }
+        if (width > 1300) {
+            document.getElementById("sideBill").style.width = "400px";
+            document.getElementById("scroll-container").style.marginRight = "400px";
+        }
+    };
+    </script>
+</body>
+</html>
