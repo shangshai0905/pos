@@ -49,6 +49,7 @@
                     </div>
                 </div>
             </form>
+        </div>
         <section class="table__body">
             <table>
                 <thead>
@@ -94,35 +95,7 @@
                 }
             }
             }
-            else
-            {
-                $sql = "SELECT * FROM sales WHERE salesdate = '$date' ";
-                $result = mysqli_query($connection,$sql) or 
-                trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
-
-                if(mysqli_num_rows($result) > 0){
-                    foreach($result as $row1){
-                    $id = $row1['p_id'];
-                        $sql1 = "SELECT p_name FROM product WHERE p_id = '$id'";
-                        $result1 = mysqli_query($connection , $sql1);
-                        if($result1->num_rows > 0){
-                            $row1 = $result1->fetch_assoc();
-                            ?>
-                            <tr>    
-                                <td><?php echo $row1['p_name'];?></td>
-                                <td><?php echo $row['quantity'];?></td>
-                                <td><?php echo "P". $row['price'];?></td>
-                                <td><?php echo $row['salesdate'];?></td>
-                                <td class="text-end"><?php echo $total = $row['quantity'] * $row['price'];?></td>
-                            </tr>
-                            
-                        <?php 
-                        
-                    }
-                    $totalprice = $totalprice + $total;
-                    }
-                }
-                }
+                
                 ?>
 
                     <tr>

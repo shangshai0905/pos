@@ -1,6 +1,6 @@
 <?php 
     require "connection.php";
-    $column = "i_id";
+    $column = "p_category";
     $sort = "ASC";
 
 

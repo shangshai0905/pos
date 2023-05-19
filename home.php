@@ -12,12 +12,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-        <!-- Sweet Alert CSS file -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
-
-    <!-- Sweet Alert JavaScript file -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
-
     <title>A.S.A</title>
 
 </head>
@@ -60,14 +54,10 @@
                         <h3>Settings</h3>
                     </div>
                     <div id="modalbody">
-                        <div class="menulinks">
-                            <a href="uploadmenu.html"><i class="fa-solid fa-plus"></i>Add Menu</a>
-                            <a href="updatemenu.php"><i class="fa-solid fa-wrench"></i>Update Menu</a>
-                            <a href="deletemenu.php"><i class="fa-solid fa-trash"></i>Delete Menu</a>
-                        </div>
-                        <div class="registerlink">
-                            <a href="register.html"><i class="fa-regular fa-registered"></i>Register Employee</a>
-                        </div>
+                        <div class="settingsLinks">
+                            <a href="listofmenus.php"><i class="fa-solid fa-wrench"></i>Menu</a>
+                            <a href="register.html"><i class="fa-regular fa-registered"></i>Employee</a>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -119,8 +109,6 @@
                                     <input type="submit" name="delete"  id="delete" value="&times;">
 
                                     <input type="hidden" name="o_name" id="o_name" value="<?php echo $row["o_name"] ?>">
-
-                                    
                                 </div>
                             </form>
 
@@ -271,58 +259,54 @@
             <div class="scroll-container" id="scroll-container">
             <div class="scroll-item best active">
                 <form action="home.php" method="post" class="form-category">
-                    <input type="text" value="best" name="category" hidden>
+                    <input type="text" value="A.S.A Best" name="category" hidden>
                     <input type="submit" value="A.S.A Best" class="scroll-input">
                 </form>
             </div>
             <div class="scroll-item seafood">
                 <form action="home.php" method="post">
-                    <input type="text" value="seafood" name="category" hidden>
-                    <input type="submit" value="seafood" class="scroll-input">
+                    <input type="text" value="Seafood" name="category" hidden>
+                    <input type="submit" value="Seafood" class="scroll-input">
                 </form>
             </div>
             <div class="scroll-item chicken">
                 <form action="home.php" method="post">
-                    <input type="text" value="chicken" name="category" hidden>
-                    <input type="submit" value="chicken">
+                    <input type="text" value="Chicken" name="category" hidden>
+                    <input type="submit" value="Chicken">
                 </form>
             </div>
             <div class="scroll-item merienda">
                 <form action="home.php" method="post">
-                    <input type="text" value="merienda" name="category" hidden>
-                    <input type="submit" value="merienda">
+                    <input type="text" value="Merienda" name="category" hidden>
+                    <input type="submit" value="Merienda">
                 </form>
             </div>
             <div class="scroll-item silog">
                 <form action="home.php" method="post">
-                    <input type="text" value="silog" name="category" hidden>
-                    <input type="submit" value="silog">
+                    <input type="text" value="Silog" name="category" hidden>
+                    <input type="submit" value="Silog">
                 </form>
             </div>
             <div class="scroll-item beef">
                 <form action="home.php" method="post">
-                    <input type="text" value="beef" name="category" hidden>
-                    <input type="submit" value="beef">
+                    <input type="text" value="Beef" name="category" hidden>
+                    <input type="submit" value="Beef">
                 </form>
             </div>
             <div class="scroll-item drinks">
                 <form action="home.php" method="post">
-                    <input type="text" value="drinks" name="category" hidden>
-                    <input type="submit" value="drinks">
+                    <input type="text" value="Drinks" name="category" hidden>
+                    <input type="submit" value="Drinks">
                 </form>
             </div>
             <div class="scroll-item rice">
                 <form action="home.php" method="post">
-                    <input type="text" value="rice" name="category" hidden>
-                    <input type="submit" value="rice" class="scroll-input">
+                    <input type="text" value="Rice" name="category" hidden>
+                    <input type="submit" value="Rice" class="scroll-input">
                 </form>
             </div>
         </div>
     </section>
-
-    <div class="category">
-        <h1>A.S.A Best Seller</h1>
-    </div>
     <!-- Display of menu -->
     <?php $category = $_POST['category'];
 
@@ -331,6 +315,10 @@
     $result = mysqli_query($connection, $sql);
 
     ?>
+
+    <div class="category">
+        <h1><?php echo $category?></h1>
+    </div>
     <section class="foods">
         <?php if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) { ?>
@@ -340,7 +328,6 @@
                             <div class="form-cart">
                                 <input type="text" name="p_id" value="<?php echo $row['p_id'] ?>" hidden>
                                 <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo'])?>" name="p_photo" />
-                                <p> </p>
                                 <div class="counter">
                                     <h3>
                                         <?php echo $row['p_name'] ?><input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden>
@@ -351,7 +338,7 @@
                                         <input type="hidden" value="1" name="quantity">
                                 </div>
                             </div>
-                            <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
+                            <input type="submit" value="Add to Billing" class="addtobilling">
                         </form>
                     </div>
                 </div>
@@ -361,10 +348,14 @@
         <?php } }
             else
             {
-                $sql = "SELECT * FROM product";
+                $sql = "SELECT * FROM product ORDER BY p_category ASC";
                 $result1 = mysqli_query($connection, $sql);
             
                 ?>
+                <div class="category">
+                    <h1>All</h1>
+                </div>
+
                 <section class="foods">
                     <?php if ($result1->num_rows > 0) {
                         while ($row1 = $result1->fetch_assoc()) { ?>
@@ -381,7 +372,7 @@
                                                     <input type="hidden" value="1" name="quantity">
                                             </div>
                                         </div>
-                                        <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
+                                        <input type="submit" value="Add to Billing" class="addtobilling">
                                     </form>
                                 </div>
                             </div>
@@ -393,8 +384,6 @@
 
         ?>
     </section>
-
-
 
 
 

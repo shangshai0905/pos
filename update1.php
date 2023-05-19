@@ -1,3 +1,47 @@
+<?php 
+    include "connection.php";   
+    
+    if (isset($_POST['update']))
+        {
+            $p_id = $_POST['p_id'];
+            $sql = "SELECT * FROM product WHERE p_id = '$p_id'";
+            $result = mysqli_query($connection, $sql) OR trigger_error("Field sql" .mysqli_error($connection), E_USER_ERROR);
+            $row = mysqli_fetch_assoc($result);
+
+        }
+    if(isset($_POST['updatebtn']))
+        {
+            $name = $_POST['name'];
+            $category = $_POST['category'];
+            $quantity = $_POST['quantity'];
+            $price = $_POST['price'];
+            $p_id = $_POST['pid'];
+
+            $sql = "SELECT * FROM inventory WHERE p_id = '$p_id'";
+            $result = mysqli_query($connection,$sql);
+            if ($result->num_rows > 0)
+                {
+                    $row = $result->fetch_assoc();
+                    $row['quantity'];
+                    $totalquant = $row['quantity'] + $quantity;
+                    $sql1 ="UPDATE product INNER JOIN inventory ON product.p_id = inventory.p_id
+                    SET product.p_category = '$category', product.p_price= '$price', inventory.quantity = '$totalquant'
+                    WHERE inventory.i_id = $p_id;";
+                    $result1 = mysqli_query($connection, $sql1);
+
+                    echo "<script> 
+                    alert('$name is successfully updated!')
+                    </script>";
+                    echo "<script> 
+                            window.location.href='listofmenus.php'
+                        </script>";
+
+                }                            
+
+
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,73 +53,47 @@
     <title>Document</title>
 </head>
 <body>
-<?php 
-    include "connection.php";
-    // include "retrieveorder.php";
-    include "filtersearch.php";
-    error_reporting(0);  // for no report on undifined array or variable
-    $i_id = $_POST['i_id'];
-    $p_id = $_POST['p_id'];
-   
-    
-    $sql = "SELECT * FROM product WHERE p_id = '$p_id'";
-    $result = mysqli_query($connection , $sql);
-    if($result->num_rows > 0){
-        $row = $result->fetch_assoc();
-       
-
-?>
-
     <div class="settings">
-        <a href="home.php" >Home</a>
+        <a href="listofmenus.php" >List of Menus</a>
     </div>
 
     <div class="body" >
         <div class="wrapper">
             <div class="form-wrapper sign-in">
-                <form action="update2.php" method="post" enctype="multipart/form-data">
+                <form action="update1.php" method="post">
                     <h2>Update Menu</h2>
-                    <div class="sm-3">
+                    <div class="sm-3 mb-3">
                       <label for="" class="form-label">Menu Name</label>
                       <input type="text" name="pid" value="<?php echo $row['p_id'];?>" hidden>
-                      <input type="text" name="name" class="form-control" value="<?php echo  $row['p_name'];?>">
+                      <input type="text" name="name" class="form-control" value="<?php echo  $row['p_name'];?>" readonly>
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Category</label>
+                      <select name="category" id="category" class="form-select">
+                            <option value="A.S.A Best" <?php echo $row['p_category'] == "A.S.A Best" ? "selected": "" ?>>A.S.A Best</option>
+                            <option value="Seafood" <?php echo $row['p_category'] == "Seafood" ? "selected": "" ?>>Seafood</option>
+                            <option value="Chicken" <?php echo $row['p_category'] == "Chicken" ? "selected": "" ?>>Chicken</option>
+                            <option value="Merienda" <?php echo $row['p_category'] == "Merienda" ? "selected": "" ?>>Merienda</option>
+                            <option value="Silog" <?php echo $row['p_category'] == "Silog" ? "selected": "" ?>>Silog</option>
+                            <option value="Beef" <?php echo $row['p_category'] == "Beef" ? "selected": "" ?>>Beef</option>
+                            <option value="Drinks" <?php echo $row['p_category'] == "Drinks" ? "selected": "" ?>>Drinks</option>
+                            <option value="Rice" <?php echo $row['p_category'] == "Rice" ? "selected": "" ?>>Rice</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Quantity</label>
-                        <input type="text" name="quantity" class="form-control">
+                        <input type="text" name="quantity" class="form-control" placeholder="Enter additional quantity.">
                     </div>
-                    <button type="submit" >Update</button>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Price</label>
+                        <input type="text" name="price" class="form-control" value="<?php echo  $row['p_price'];?>">
+                    </div>
+
+                    <button type="submit" name="updatebtn" id="updatebtn">Update</button>
                 </form>
             </div>
         </div>
     </div>
-    <?php 
-} ?>
-    <!-- <div class="body">
-        <div class="wrapper">
-            <div class="form-wrapper sign-in">
-                <form action="register.php" method="post" enctype="multipart/form-data">
-                    <h2>Register</h2>
-                    <div class="input-group">
-                        <input type="text" name="name" >
-                        <label for="">Employee Name</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" name="username" >
-                        <label for="">Username</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" name="password" >
-                        <label for="">Password</label>
-                    </div>
-                    <button type="submit" name="submit">Register</button>
-                    <div class="signUp-link">
-                        <p>Try your account here <a href="index.html" class="signUpBtn-link">Login</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>

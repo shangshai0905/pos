@@ -134,12 +134,12 @@ body {
   #settingsModal #modalbody {
     padding: 10px;
   }
-  .menulinks a {
+  .settingsLinks a {
     text-align: center;
     padding: 8px;
     font-size: 20px;
     margin-top: 70px;
-    width: 30%;
+    width: 40%;
     text-decoration: none;
     display: inline-block;
     color: #000;
@@ -147,20 +147,7 @@ body {
     justify-content: center;
     margin-left: 10px;
   }
-  .registerlink a {
-    text-align: center;
-    padding: 8px;
-    font-size: 25px;
-    margin-top: 50px;
-    border: none;
-    outline: none;
-    width: 100%;
-    text-decoration: none;
-    display: inline-block;
-    color: #000;
-
-  }
-  .menulinks a:before{
+  .settingsLinks a:before{
     content: '';
     background: rgb(245, 118, 118);
     display: block;
@@ -171,29 +158,11 @@ body {
     transition: all 0.3s ease-in-out;
   }
   
-  .menulinks a:hover{
+  .settingsLinks a:hover{
    background-position: 0;
   }
   
-  .menulinks a:hover::before{
-    width: 30%;
-  }
-
-  .registerlink a:before{
-    content: '';
-    background:  rgb(245, 118, 118);
-    display: block;
-    position: absolute;
-    margin-top: 60px;
-    width: 0;
-    height: 3px;
-    transition: all 0.3s ease-in-out;
+  .settingsLinks a:hover::before{
+    width: 40%;
   }
   
-  .registerlink a:hover{
-   background-position: 0;
-  }
-  
-  .registerlink a:hover::before{
-    width: 95%;
-  }

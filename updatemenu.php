@@ -14,7 +14,7 @@ error_reporting(0);  // for no report on undifined array or variable
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/update.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>Update Menu</title>
+    <title>Menu</title>
 </head>
 
 <body>
@@ -23,16 +23,16 @@ error_reporting(0);  // for no report on undifined array or variable
     </div>
     <main class="table">
         <section class="table__header">
-            <h1 class="text-center">Update Inventory</h1>
+            <h1 class="text-center">List of Menus</h1>
         </section>
         <section class="table__body">
-            <table >
+            <table>
                 <thead>
                     <tr>
                         <th>Item Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
-                        <th>Action</th>
+                        <th style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,9 @@ error_reporting(0);  // for no report on undifined array or variable
                                     <td><?php echo $row['p_name']; ?> <input type="text" name="i_id" value ="<?php echo $row1['i_id']?>" hidden><input type="text" name="p_id" value ="<?php echo $id ?>" hidden></td>
                                     <td><?php echo $row1['quantity']; ?></td>
                                     <td><?php echo "P" . $row['p_price']; ?></td>
-                                    <td><button class="btn btn-dark">Update Inventory</button></td>
+                                    <td>
+                                        <button class="btn btn-dark">Update Inventory</button>
+                                    </td>
                                     
                                 </tr>
                                 </form>

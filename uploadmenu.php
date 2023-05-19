@@ -40,7 +40,11 @@ if(isset($_POST["submit"])){
                     }
                 }
                $status = 'success'; 
-                $statusMsg = "File uploaded successfully."; 
+               echo "<script> 
+               alert('$name is successfully added.');
+               window.location.href='listofmenus.php'
+                   </script>";
+   
             }else{ 
                 $statusMsg = "File upload failed, please try again."; 
             }  
@@ -51,7 +55,4 @@ if(isset($_POST["submit"])){
         $statusMsg = 'Please select an image file to upload.'; 
     } 
 } 
- 
-// Display status message 
-echo $statusMsg; 
-?>
+ ?>
