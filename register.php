@@ -1,19 +1,27 @@
 <?php 
 include "connection.php";
-$name = $_POST['name'];
-$user = $_POST['username'];
-$pass = $_POST['password'];
-      $sql = "INSERT into employees (e_name , e_user , e_pass  ) VALUES ( '$name' , '$user' , '$pass'  )";
-      $result = mysqli_query($connection , $sql);
-      if ($result == "TRUE")
-      {
-        echo  
-        header("location:register.html");
+  if(isset($_POST['submit']))
+    {
+      $name = trim(ucwords($_POST['name']));
+      $username = trim(ucwords($_POST['username']));
+      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $user_role = $_POST['user_role'];
+      
+
+      $sql = "INSERT INTO employees SET e_name = '$name', e_user = '$username', e_pass = '$password', e_role = '$user_role'";
+
+      //mysqli_query is procedural running the mysql statement
+      $result = mysqli_query($connection, $sql) OR trigger_error("Field sql" .mysqli_error($connection), E_USER_ERROR);
+
+      echo "<script> alert('Successfully Created') </script>";
+      echo "<script> window.location.href = 'listofemployee.php' </script>";
     }
-      else
-      {
-        echo "insert error";
-      }
+    else {
+      echo "<script> window.location.href = 'listofemployee.php' </script>";
+    }
+
+?>
+
     
           
         

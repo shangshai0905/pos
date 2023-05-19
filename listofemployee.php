@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Menus</title>
+    <title>List of Employees</title>
     <link rel="stylesheet" href="css/update.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
@@ -15,28 +15,26 @@
     </div>
     <main class="table">
         <section class="table__header">
-            <h1 class="text-center">List of Menus</h1>
+            <h1 class="text-center">List of Employees</h1>
         </section>
-                <form action="uploadmenuu.php" method="post" class="d-flex justify-content-center">
-                    <button class="btn btn-dark mb-2">Add Menu</button>
-                    <input type="text" name="p_id" value ="<?php echo $id ?>" hidden>
+                <form action="register.html" method="post" class="d-flex justify-content-center">
+                    <button class="btn btn-dark mb-2">Add Employee</button>
                 </form>
         <section class="table__body">
             <table>
                 <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
+                        <th>Employee Name</th>
+                        <th>User Name</th>
+                        <th>Password</th>
+                        <th>Role</th>
                         <th style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     require 'connection.php'; 
-                    $sql = "SELECT product.p_id, inventory.i_id, product.p_name, product.p_category, product.p_price, inventory.quantity FROM product 
-                    RIGHT JOIN inventory ON product.p_id = inventory.p_id ORDER BY product.p_category ASC;
+                    $sql = "SELECT * FROM employees ORDER BY e_id ASC;
                     ";
                     $result = mysqli_query($connection, $sql);
                     while($row = mysqli_fetch_array($result))   
@@ -45,28 +43,28 @@
                                
                                 <tr>
                                     <td>
-                                        <?php echo $row['p_name']; ?> <input type="text" name="i_id" value ="<?php echo $row['i_id']?>" hidden>
-                                        <input type="text" name="p_id" value ="<?php echo $id ?>" hidden>
+                                        <?php echo $row['e_name']; ?> <input type="text" name="e_id" value ="<?php echo $row['e_id']?>" hidden>
+                                        <input type="text" name="e_id" value ="<?php echo $row['e_id'] ?>" hidden>
                                     </td>
                                     <td>
-                                        <?php echo $row['p_category']; ?> 
+                                        <?php echo $row['e_user']; ?> 
                                     </td>
 
-                                    <td>
-                                        <?php echo $row['quantity']; ?>
+                                    <td style="word-break: break-all;">
+                                        <?php echo $row['e_pass']; ?>
                                     </td>
                                     <td>
-                                        <?php echo "P" . $row['p_price']; ?>
+                                        <?php echo $row['e_role']; ?>
                                     </td>
                                     <td class="d-flex gap-3 justify-content-center">
-                                        <form action="update1.php" method="post">
+                                        <form action="updateEmp.php" method="post">
                                             <button class="btn btn-dark" name="update" id="update" type="submit">Update</button>
-                                            <input type="hidden" name="p_id" id="p_id" value ="<?php echo $row['p_id']?>">
+                                            <input type="hidden" name="e_id" id="e_id" value ="<?php echo $row['e_id']?>">
                                         </form>
-                                        <form action="delete.php" method="post">
-                                            <button class="btn btn-dark" name="delete" onclick="return confirm('Are you sure you want to delete <?php echo $row['p_name']; ?>?')">Delete</button>
-                                            <input type="text" name="name" value="<?php echo $row['p_name']; ?>" hidden >
-                                            <input type="text" name="prodid" value="<?php echo $row['p_id']; ?>" hidden>
+                                        <form action="deleteEmp.php" method="post">
+                                            <button class="btn btn-dark" name="delete" onclick="return confirm('Are you sure you want to delete <?php echo $row['e_name']; ?>?')">Delete</button>
+                                            <input type="text" name="name" value="<?php echo $row['e_name']; ?>" hidden >
+                                            <input type="text" name="e_id" value="<?php echo $row['e_id']; ?>" hidden>
 
                                         </form>
 

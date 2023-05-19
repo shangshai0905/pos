@@ -1,3 +1,13 @@
+<?php 
+    require "session.php";
+
+    if($_SESSION['user_role'] == 'Cashier') 
+        {
+            $welcome = $_SESSION['username'];
+        } 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +51,12 @@
                     <span class="nav-item">Wallet</span>
                 </a>
             </li>
+
+            <?php 
+                if($_SESSION['user_role'] == 'Admin') 
+                                    {
+            ?>
+
             <li>
                 <a id="openSettings" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a>
             </li>
@@ -56,14 +72,18 @@
                     <div id="modalbody">
                         <div class="settingsLinks">
                             <a href="listofmenus.php"><i class="fa-solid fa-wrench"></i>Menu</a>
-                            <a href="register.html"><i class="fa-regular fa-registered"></i>Employee</a>
+                            <a href="listofemployee.php"><i class="fa-regular fa-registered"></i>Employee</a>
                         </div> 
                     </div>
                 </div>
             </div>
 
+            <?php
+                }
+            ?>
+
             <li>
-                <a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <a href="logout.php" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span class="nav-item">Log out</span>
                 </a>
             </li>
@@ -241,6 +261,9 @@
                                     <td id="change"></td>
                                 </tr>
                                 <tr>
+                                    <td colspan="4"> Cashier: <?php echo $welcome; ?> </td>
+                                </tr>
+                                <tr>
                                     <td colspan="4"> THANK YOU!! </td>
                                 </tr>
                                 
@@ -330,12 +353,15 @@
                                 <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo'])?>" name="p_photo" />
                                 <div class="counter">
                                     <h3>
-                                        <?php echo $row['p_name'] ?><input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden>
+                                        <?php echo $row['p_name'] ?>
+                                        <input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden>
                                     </h3>
                                     <p>
                                         <?php echo "P" . $row['p_price'] ?><input type="text" name="p_price" value="<?php echo $row['p_price'] ?>" hidden>
                                     </p> 
                                         <input type="hidden" value="1" name="quantity">
+                                        <input type="hidden" name="e_name" value="<?php echo $welcome ?>">
+
                                 </div>
                             </div>
                             <input type="submit" value="Add to Billing" class="addtobilling">
@@ -370,6 +396,8 @@
                                                 <h3><?php echo $row1['p_name'] ?><input type="text" name="p_name" value="<?php echo $row1['p_name'] ?>" hidden></h3>
                                                 <p><?php echo "P" . $row1['p_price'] ?><input type="text" name="p_price" value="<?php echo $row1['p_price'] ?>" hidden></p> 
                                                     <input type="hidden" value="1" name="quantity">
+                                                    <input type="hidden" name="e_name" value="<?php echo $welcome ?>">
+
                                             </div>
                                         </div>
                                         <input type="submit" value="Add to Billing" class="addtobilling">

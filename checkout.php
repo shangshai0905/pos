@@ -23,11 +23,12 @@
            $name = $row['o_name'];
           $quantity = $row['o_quantity'];
            $price = $row['o_price'];
+           $e_name = $row['e_name'];
            $total = $quantity * $price;
           
       
       
-       $sql1 = "INSERT into sales (p_id , quantity , price , salesdate ) VALUES ('$p_id' , '$quantity' , '$price' , '$date')";
+       $sql1 = "INSERT into sales (p_id , quantity , price , e_name , salesdate ) VALUES ('$p_id' , '$quantity' , '$price' , '$e_name' , '$date')";
        $result1 = mysqli_query($connection , $sql1);
        if ($result1)
        {
@@ -63,7 +64,7 @@
    }
    echo "<script> 
    window.location.href='home.php'
-</script>"; 
+    </script>"; 
    }
    else
    {

@@ -4,6 +4,7 @@ $name = $_POST['p_name'];
 $price = $_POST['p_price'];
 $p_id = $_POST['p_id'];
 $o_quant = $_POST['quantity'];
+$e_name = $_POST['e_name'];
 
   $sql4 = "SELECT * FROM inventory WHERE p_id = '$p_id'";
   $result4 = mysqli_query($connection , $sql4);
@@ -56,7 +57,7 @@ $o_quant = $_POST['quantity'];
         }
         else
           {
-            $sql1 = "INSERT into orders (o_name , p_id , o_price, o_quantity  ) VALUES ( '$name' , '$p_id' , '$price' , '$o_quant' )";
+            $sql1 = "INSERT into orders (o_name , p_id , o_price, o_quantity, e_name  ) VALUES ( '$name' , '$p_id' , '$price' , '$o_quant' , '$e_name' )";
             $result1 = mysqli_query($connection , $sql1);
             if ($result1 == "TRUE")
               {
