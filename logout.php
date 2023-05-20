@@ -4,7 +4,6 @@
 
     $_SESSION['status'] = 'invalid';
     unset($_SESSION['username']);
-    unset($_SESSION['access']);
     header("Location: index.html");
 
     mysqli_close($connection);
